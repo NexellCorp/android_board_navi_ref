@@ -55,6 +55,12 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
 
+# wallpaper
+PRODUCT_COPY_FILES += \
+	device/nexell/avn_ref/wallpaper:/data/system/users/0/wallpaper \
+	device/nexell/avn_ref/wallpaper_orig:/data/system/users/0/wallpaper_orig \
+	device/nexell/avn_ref/wallpaper_info.xml:/data/system/users/0/wallpaper_info.xml
+
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_AAPT_CONFIG := normal
@@ -86,7 +92,9 @@ PRODUCT_PACKAGES += \
 	gralloc.navi_ref \
 	libGLES_mali \
 	hwcomposer.navi_ref \
-	audio.primary.navi_ref
+	audio.primary.navi_ref \
+	memtrack.navi_ref \
+	camera.navi_ref
 
 # tinyalsa
 PRODUCT_PACKAGES += \
