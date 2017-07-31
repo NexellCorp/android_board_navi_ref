@@ -14,11 +14,14 @@
 # limitations under the License.
 #
 
+PRODUCT_SHIPPING_API_LEVEL := 25
+
 PRODUCT_COPY_FILES += \
 	device/nexell/navi_ref/init.navi_ref.rc:root/init.navi_ref.rc \
 	device/nexell/navi_ref/init.navi_ref.usb.rc:root/init.navi_ref.usb.rc \
 	device/nexell/navi_ref/fstab.navi_ref:root/fstab.navi_ref \
-	device/nexell/navi_ref/ueventd.navi_ref.rc:root/ueventd.navi_ref.rc
+	device/nexell/navi_ref/ueventd.navi_ref.rc:root/ueventd.navi_ref.rc \
+	device/nexell/navi_ref/init.recovery.navi_ref.rc:root/init.recovery.navi_ref.rc
 
 PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -47,25 +50,30 @@ PRODUCT_COPY_FILES += \
 
 # hardware features
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+	device/nexell/navi_ref/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
-	frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+	frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml
 
 # wallpaper
 PRODUCT_COPY_FILES += \
-	device/nexell/avn_ref/wallpaper:/data/system/users/0/wallpaper \
-	device/nexell/avn_ref/wallpaper_orig:/data/system/users/0/wallpaper_orig \
-	device/nexell/avn_ref/wallpaper_info.xml:/data/system/users/0/wallpaper_info.xml
+	device/nexell/navi_ref/wallpaper:/data/system/users/0/wallpaper \
+	device/nexell/navi_ref/wallpaper_orig:/data/system/users/0/wallpaper_orig \
+	device/nexell/navi_ref/wallpaper_info.xml:/data/system/users/0/wallpaper_info.xml
+
+# Recovery
+PRODUCT_PACKAGES += \
+	librecovery_updater_nexell
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
+PRODUCT_AAPT_CONFIG += mdpi xlarge large
+PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_AAPT_PREBUILT_DPI := hdpi mdpi ldpi
 PRODUCT_CHARACTERISTICS := tablet
 
 # OpenGL ES API version: 2.0
@@ -138,10 +146,35 @@ $(call inherit-product-if-exists, hardware/realtek/wlan/config/p2p_supplicant.mk
 
 DEVICE_PACKAGE_OVERLAYS := device/nexell/navi_ref/overlay
 
-# limit dex2oat threads to improve thermals
+# increase dex2oat threads to improve booting time
 PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.boot-dex2oat-threads=4 \
 	dalvik.vm.dex2oat-threads=4 \
 	dalvik.vm.image-dex2oat-threads=4
 
-$(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
+#Enabling video for live effects
+-include frameworks/base/data/videos/VideoPackage1.mk
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=8m
+
+# HWUI common settings
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.gradient_cache_size=1 \
+    ro.hwui.drop_shadow_cache_size=6 \
+    ro.hwui.r_buffer_cache_size=8 \
+    ro.hwui.texture_cache_flushrate=0.4 \
+    ro.hwui.text_small_cache_width=1024 \
+    ro.hwui.text_small_cache_height=1024 \
+    ro.hwui.text_large_cache_width=2048 \
+    ro.hwui.text_large_cache_height=1024
+
+#skip boot jars check
+SKIP_BOOT_JARS_CHECK := true
+
+$(call inherit-product, frameworks/base/data/fonts/fonts.mk)

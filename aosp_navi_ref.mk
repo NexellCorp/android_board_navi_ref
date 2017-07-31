@@ -23,13 +23,26 @@ PRODUCT_BRAND := Android
 PRODUCT_MODEL := AOSP on navi_ref
 PRODUCT_MANUFACTURER := NEXELL
 
-PRODUCT_COPY_FILES += device/nexell/navi_ref/fstab.navi_ref:root/fstab.navi_ref
+PRODUCT_COPY_FILES += \
+	device/nexell/kernel/kernel-4.4.x/arch/arm/boot/zImage:kernel
+
+PRODUCT_COPY_FILES += \
+	device/nexell/kernel/kernel-4.4.x/arch/arm/boot/dts/s5p4418-navi_ref-rev01.dtb:2ndbootloader
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.product.first_api_level=21
 
 # Disable bluetooth because navi_ref does not use bluetooth source
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_bluetooth=true
+
+# Disable other feature no needed in avn board
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_serial=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_samplingprof=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_consumerir=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_rtt=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_vrmanager=true
 
 $(call inherit-product, device/nexell/navi_ref/device.mk)
 
 PRODUCT_PACKAGES += \
 	Launcher3
-
