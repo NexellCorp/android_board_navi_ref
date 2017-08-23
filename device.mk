@@ -16,6 +16,10 @@
 
 PRODUCT_SHIPPING_API_LEVEL := 25
 
+# Camera App
+PRODUCT_PACKAGES += \
+	Camera
+
 PRODUCT_COPY_FILES += \
 	device/nexell/navi_ref/init.navi_ref.rc:root/init.navi_ref.rc \
 	device/nexell/navi_ref/init.navi_ref.usb.rc:root/init.navi_ref.usb.rc \
