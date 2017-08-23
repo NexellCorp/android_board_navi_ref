@@ -114,3 +114,8 @@ WIFI_DRIVER_FW_PATH_PARAM	:= "/dev/null"
 
 # certificate
 PRODUCT_DEFAULT_DEV_CERTIFICATE := device/nexell/navi_ref/signing_keys/release
+
+# camera
+BOARD_CAMERA_BACK_DEVICE := "/dev/video7"
+BOARD_CAMERA_NUM := 1
+
