@@ -141,7 +141,8 @@ PRODUCT_PACKAGES += \
 	hwcomposer.navi_ref \
 	audio.primary.navi_ref \
 	memtrack.navi_ref \
-	camera.navi_ref
+	camera.navi_ref	\
+	lights.navi_ref
 
 # tinyalsa
 PRODUCT_PACKAGES += \
