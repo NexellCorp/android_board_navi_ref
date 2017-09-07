@@ -25,6 +25,7 @@ TARGET_BOOTLOADER_BOARD_NAME := navi_ref
 TARGET_BOARD_INFO_FILE := device/nexell/navi_ref/board-info.txt
 
 ENABLE_CPUSETS := true
+ENABLE_SCHEDBOOST := true
 
 TARGET_NO_BOOTLOADER := false
 TARGET_NO_KERNEL := false
