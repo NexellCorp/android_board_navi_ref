@@ -97,7 +97,7 @@ if [ -f ${UBOOT_DIR}/u-boot.bin ]; then
 		${OUT_DIR}/ramdisk-recovery.img \
 		"recovery:emmc")
 
-	UBOOT_BOOTARGS="console=ttyAMA3,115200n8 loglevel=7 printk.time=1 androidboot.hardware=navi_ref androidboot.console=ttyAMA3 androidboot.serialno=s5p4418_navi_ref nx_drm.fb_buffers=3 nx_drm.fb_vblank nx_drm.fb_pan_crtcs=0x1 quiet"
+	UBOOT_BOOTARGS="console=ttyAMA3,115200n8 loglevel=7 printk.time=1 androidboot.hardware=navi_ref androidboot.console=ttyAMA3 androidboot.serialno=s5p4418_navi_ref quiet"
 
 	SPLASH_SOURCE="mmc"
 	SPLASH_OFFSET="0x2e4200"
