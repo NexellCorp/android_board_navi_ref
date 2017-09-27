@@ -9,7 +9,7 @@ source ${TOP}/device/nexell/tools/common.sh
 source ${TOP}/device/nexell/tools/dir.sh
 source ${TOP}/device/nexell/tools/make_build_info.sh
 
-parse_args $@
+parse_args -s s5p4418 $@
 print_args
 setup_toolchain
 export_work_dir
