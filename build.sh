@@ -8,12 +8,15 @@ export TOP
 source ${TOP}/device/nexell/tools/common.sh
 source ${TOP}/device/nexell/tools/dir.sh
 source ${TOP}/device/nexell/tools/make_build_info.sh
+source ${TOP}/device/nexell/tools/revert_patches.sh
 
 parse_args -s s5p4418 $@
 print_args
 setup_toolchain
 export_work_dir
-patches
+
+revert_common ${TOP}/device/nexell/patch
+patch_common ${TOP}/device/nexell/patch
 
 DEV_PORTNUM=0
 MEMSIZE="2GB"
