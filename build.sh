@@ -15,6 +15,9 @@ print_args
 setup_toolchain
 export_work_dir
 
+revert_common ${TOP}/device/nexell/navi_ref/patch
+patch_common ${TOP}/device/nexell/navi_ref/patch
+
 DEV_PORTNUM=0
 MEMSIZE="2GB"
 
