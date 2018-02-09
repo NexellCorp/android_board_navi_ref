@@ -32,6 +32,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.product.first_api_level=21
 
+# vold check fs
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.vold.check_fs=0
+
 PRODUCT_COPY_FILES += \
 	device/nexell/navi_ref/quickboot/fstab.navi_ref:root/fstab.navi_ref
 
