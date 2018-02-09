@@ -32,6 +32,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.product.first_api_level=21
 
+PRODUCT_COPY_FILES += \
+	device/nexell/navi_ref/fstab.navi_ref:root/fstab.navi_ref
+
 # Disable bluetooth because navi_ref does not use bluetooth source
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_bluetooth=false ro.bluetooth.hfp.ver=1.6
 

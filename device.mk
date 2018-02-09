@@ -23,7 +23,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	device/nexell/navi_ref/init.navi_ref.rc:root/init.navi_ref.rc \
 	device/nexell/navi_ref/init.navi_ref.usb.rc:root/init.navi_ref.usb.rc \
-	device/nexell/navi_ref/fstab.navi_ref:root/fstab.navi_ref \
 	device/nexell/navi_ref/ueventd.navi_ref.rc:root/ueventd.navi_ref.rc \
 	device/nexell/navi_ref/init.recovery.navi_ref.rc:root/init.recovery.navi_ref.rc
 
