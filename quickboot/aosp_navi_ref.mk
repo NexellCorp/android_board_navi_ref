@@ -55,4 +55,6 @@ $(call inherit-product, device/nexell/navi_ref/device.mk)
 
 PRODUCT_PACKAGES += \
 	Launcher3 \
-	Settings
+	Settings \
+	Gallery2 \
+	Camera2
