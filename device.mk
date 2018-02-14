@@ -16,10 +16,6 @@
 
 PRODUCT_SHIPPING_API_LEVEL := 25
 
-# Camera App
-PRODUCT_PACKAGES += \
-	Camera
-
 PRODUCT_COPY_FILES += \
 	device/nexell/navi_ref/init.navi_ref.rc:root/init.navi_ref.rc \
 	device/nexell/navi_ref/init.navi_ref.usb.rc:root/init.navi_ref.usb.rc \
@@ -249,3 +245,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 SKIP_BOOT_JARS_CHECK := true
 
 $(call inherit-product, frameworks/base/data/fonts/fonts.mk)
+
+# GMS
+#BUILD_GMS = yes
+ifeq ($(strip $(BUILD_GMS)),yes)
+PRODUCT_PACKAGES += \
+	GoogleLoginService \
+	GoogleServicesFramework \
+	GmsCore \
+	Phonesky \
+	com.google.android.maps.xml \
+	com.google.android.maps.jar \
+	Maps
+PRODUCT_COPY_FILES += \
+	device/nexell/navi_ref/init_gms_perm.sh:system/bin/init_gms_perm.sh
+endif
