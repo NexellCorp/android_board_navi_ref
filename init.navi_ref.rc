@@ -76,7 +76,6 @@ on post-fs
 on late-fs
     start servicemanager
     start surfaceflinger
-    start audioserver
     start bootanim
     mount_all ./fstab.navi_ref --late
 
@@ -139,6 +138,8 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/read_ahead_kb 128
     write /sys/block/mmcblk0/queue/nr_requests 128
     write /sys/block/mmcblk0/queue/iostats 0
+
+    exec -- /system/bin/init_gms_perm.sh
 
     write /sys/class/thermal/thermal_zone0/mode enabled
 
