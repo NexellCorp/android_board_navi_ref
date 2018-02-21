@@ -74,9 +74,11 @@ Only the three quirks included above are recognized at this point:
     a texture and possibly other code, so just DON'T USE THIS QUIRK.
 
 -->
-
 <MediaCodecs>
     <Include href="media_codecs_google_audio.xml" />
+    <Settings>
+	    <Setting name="max-video-encoder-input-buffers" value="1" />
+    </Settings>
     <Decoders>
         <!-- Nexell Audio Decoder for FFMPEG -->
   <!--
