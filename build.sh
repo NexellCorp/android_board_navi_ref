@@ -191,3 +191,8 @@ fi
 gen_boot_usb_script_4418 nxp4330 ${ADDRESS} ${RESULT_DIR}
 
 make_build_info ${RESULT_DIR}
+
+# restore aosp_navi_ref.mk
+cd ${DEVICE_DIR}
+git checkout aosp_navi_ref.mk
+cd ${TOP}
