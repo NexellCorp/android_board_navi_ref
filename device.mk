@@ -55,6 +55,10 @@ PRODUCT_COPY_FILES += \
         device/nexell/navi_ref/bluetooth/BCM434545.hcd:system/vendor/firmware/BCM434545.hcd \
         device/nexell/navi_ref/bluetooth/BCM20710A1_001.002.014.0103.0117.hcd:system/vendor/firmware/BCM20710A1_001.002.014.0103.0117.hcd
 
+# connection service
+PRODUCT_COPY_FILES += \
+        frameworks/native/data/etc/android.software.connectionservice.xml:system/etc/permissions/android.software.connectionservice.xml
+
 # ffmpeg libraries
 EN_FFMPEG_EXTRACTOR := false
 EN_FFMPEG_AUDIO_DEC := false
