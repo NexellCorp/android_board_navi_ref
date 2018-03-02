@@ -57,4 +57,6 @@ PRODUCT_PACKAGES += \
 	Launcher3 \
 	Settings \
 	Gallery2 \
-	Camera2
+	Camera2 \
+	BluetoothMidiService \
+	ContactsProvider
