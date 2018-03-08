@@ -155,3 +155,5 @@ on property:sys.boot_completed=1
     class_start late_start
 
     exec -- /system/bin/iproxy.sh
+
+    setprop persist.sys.usb.config adb
