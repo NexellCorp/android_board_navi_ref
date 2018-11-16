@@ -180,6 +180,8 @@ post_process ${TARGET_SOC} \
 	navi \
 	${DEVICE_DIR}/logo.bmp
 
+cp -f ${TOP}/device/nexell/navi_ref/boot_by_usb.sh ${RESULT_DIR}
+
 make_ext4_recovery_image \
 	${KERNEL_DIR}/arch/arm/boot/zImage \
 	${KERNEL_DIR}/arch/arm/boot/dts/s5p4418-navi_ref-rev01.dtb \
