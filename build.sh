@@ -107,7 +107,11 @@ if [ -f ${UBOOT_DIR}/u-boot.bin ]; then
 
 	UBOOT_RECOVERYCMD="ext4load mmc 0:6 0x49000000 recovery.dtb; ext4load mmc 0:6 0x40008000 recovery.kernel; ext4load mmc 0:6 0x48000000 ramdisk-recovery.img; bootz 40008000 0x48000000:27e800 0x49000000"
 
-	UBOOT_BOOTARGS="console=ttyAMA3,115200n8 loglevel=7 printk.time=1 androidboot.hardware=navi_ref androidboot.console=ttyAMA3 androidboot.serialno=0123456789ABCDEF quiet"
+	if [ "${QUICKBOOT}" == "true" ]; then
+		UBOOT_BOOTARGS="console=ttyAMA3,115200n8 loglevel=7 printk.time=1 androidboot.hardware=navi_ref androidboot.console=ttyAMA3 androidboot.serialno=0123456789ABCDEF quiet nx_rearcam.sensor_init_parm=1"
+	else
+		UBOOT_BOOTARGS="console=ttyAMA3,115200n8 loglevel=7 printk.time=1 androidboot.hardware=navi_ref androidboot.console=ttyAMA3 androidboot.serialno=0123456789ABCDEF quiet"
+	fi
 
 	SPLASH_SOURCE="mmc"
 	SPLASH_OFFSET="0x2e4200"
