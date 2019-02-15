@@ -70,6 +70,12 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nexell/navi_ref/bluetooth
 BOARD_CUSTOM_BT_CONFIG := device/nexell/navi_ref/bluetooth/vnd_generic.txt
 BOARD_CHARGER_ENABLE_SUSPEND := false
 
+# bluetooth audio paths
+SND_BT_CARD_ID := 0
+SND_BT_DEVICE_ID := 0
+SND_BT_SCO_CARD_ID := 0
+SND_BT_SCO_DEVICE_ID := 2
+
 # ffmpeg libraries
 EN_FFMPEG_EXTRACTOR := false
 EN_FFMPEG_AUDIO_DEC := false
