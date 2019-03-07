@@ -94,6 +94,13 @@ if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_ANDROID}" == "true" ]; then
 	build_android ${TARGET_SOC} ${BOARD_NAME} userdebug
 fi
 
+if [ "${BUILD_DIST}" == "true" ]; then
+	if [ "${QUICKBOOT}" == "true" ]; then
+		cp ${DEVICE_DIR}/quickboot/aosp_navi_ref.mk ${DEVICE_DIR}
+	fi
+	build_dist ${TARGET_SOC} ${BOARD_NAME} ${BUILD_TAG}
+fi
+
 # u-boot envs
 if [ -f ${UBOOT_DIR}/u-boot.bin ]; then
 	UBOOT_BOOTCMD=$(make_uboot_bootcmd \
@@ -156,9 +163,7 @@ if [ -f ${bl1} ] && [ -f ${loader} ] && [ -f ${secure} ] && [ -f ${nonsecure} ] 
 	test -d ${OUT_DIR} && cp ${DEVICE_DIR}/bootloader ${OUT_DIR}
 fi
 
-if [ "${BUILD_DIST}" == "true" ]; then
-	build_dist ${TARGET_SOC} ${BOARD_NAME} ${BUILD_TAG}
-fi
+
 
 if [ "${BUILD_KERNEL}" == "true" ]; then
 	test -f ${OUT_DIR}/ramdisk.img && \
