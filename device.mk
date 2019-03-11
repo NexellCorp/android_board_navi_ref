@@ -136,9 +136,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=160
 
-# default mtp for usb
+# default none for usb
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=mtp
+	persist.sys.usb.config=none
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
