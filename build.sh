@@ -103,16 +103,9 @@ fi
 
 # u-boot envs
 if [ -f ${UBOOT_DIR}/u-boot.bin ]; then
-	UBOOT_BOOTCMD=$(make_uboot_bootcmd \
-		${DEVICE_DIR}/partmap.txt \
-		${UBOOT_LOAD_ADDR} \
-		2048 \
-		${KERNEL_IMG} \
-		${DTB_IMG} \
-		${OUT_DIR}/ramdisk.img \
-		"boot:emmc")
+	UBOOT_BOOTCMD="check_hw;aboot load_mmc 2580 40008000 48000000;dtimg load_mmc 20D80 49000000 \$\{board_rev\};bootz 40008000 0x48000000:\$\{ramdisk_size\} 0x49000000"
 
-	UBOOT_RECOVERYCMD="ext4load mmc 0:6 0x49000000 recovery.dtb; ext4load mmc 0:6 0x40008000 recovery.kernel; ext4load mmc 0:6 0x48000000 ramdisk-recovery.img; bootz 40008000 0x48000000:27e800 0x49000000"
+	UBOOT_RECOVERYCMD="check_hw;dtimg load_mmc 20D80 49000000 \$\{board_rev\}; ext4load mmc 0:7 0x40008000 recovery.kernel; ext4load mmc 0:7 0x48000000 ramdisk-recovery.img; bootz 40008000 0x48000000:27e800 0x49000000"
 
 	if [ "${QUICKBOOT}" == "true" ]; then
 		UBOOT_BOOTARGS="console=ttyAMA3,115200n8 loglevel=7 printk.time=1 androidboot.hardware=navi_ref androidboot.console=ttyAMA3 androidboot.serialno=0123456789ABCDEF quiet nx_rearcam.sensor_init_parm=1"
@@ -190,6 +183,8 @@ post_process ${TARGET_SOC} \
 	${DEVICE_DIR}/logo.bmp
 
 cp -f ${TOP}/device/nexell/navi_ref/boot_by_usb.sh ${RESULT_DIR}
+
+cp -f ${OUT_DIR}/dtb.img ${RESULT_DIR}
 
 make_ext4_recovery_image \
 	${KERNEL_DIR}/arch/arm/boot/zImage \
