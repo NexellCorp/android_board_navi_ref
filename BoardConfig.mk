@@ -67,7 +67,7 @@ BOARD_USES_TSLIB := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nexell/navi_ref/bluetooth
-BOARD_CUSTOM_BT_CONFIG := device/nexell/navi_ref/bluetooth/vnd_generic.txt
+BOARD_CUSTOM_BT_CONFIG := device/nexell/navi_ref/bluetooth/vnd_navi_ref.txt
 BOARD_CHARGER_ENABLE_SUSPEND := false
 
 # bluetooth audio paths

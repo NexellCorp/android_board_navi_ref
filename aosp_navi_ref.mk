@@ -36,7 +36,7 @@ PRODUCT_COPY_FILES += \
 	device/nexell/navi_ref/fstab.navi_ref:root/fstab.navi_ref
 
 # Disable bluetooth because navi_ref does not use bluetooth source
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_bluetooth=false ro.bluetooth.hfp.ver=1.6
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_bluetooth=false
 
 # Disable other feature no needed in avn board
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += config.disable_serial=true

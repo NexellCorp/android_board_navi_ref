@@ -50,11 +50,11 @@ PRODUCT_COPY_FILES += \
 
 # bluetooth
 PRODUCT_COPY_FILES += \
-        frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-        frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-        device/nexell/navi_ref/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf \
-        device/nexell/navi_ref/bluetooth/BCM434545.hcd:system/vendor/firmware/BCM434545.hcd \
-        device/nexell/navi_ref/bluetooth/BCM20710A1_001.002.014.0103.0117.hcd:system/vendor/firmware/BCM20710A1_001.002.014.0103.0117.hcd
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    device/nexell/navi_ref/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf \
+    device/nexell/navi_ref/bluetooth/BCM434545.hcd:system/vendor/firmware/BCM434545.hcd \
+    device/nexell/navi_ref/bluetooth/BCM20710A1_001.002.014.0103.0117.hcd:system/vendor/firmware/BCM20710A1_001.002.014.0103.0117.hcd
 
 # connection service
 PRODUCT_COPY_FILES += \
