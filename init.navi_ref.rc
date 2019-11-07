@@ -62,12 +62,14 @@ on boot
     write /proc/sys/net/core/wmem_max  8388608
 
     # bluetooth
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/state
-
+    chown bluetooth net_bt /dev/ttyAMA1
     chmod 0660 /dev/ttyAMA1
-    chown bluetooth net_bt_stack /dev/ttyAMA1
+
+    # bluetooth init
+    setprop ro.bluetooth.hfp.ver 1.6
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
